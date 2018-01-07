@@ -15,6 +15,9 @@ echo "enabled=1" >> /etc/yum.repos.d/mongodb-org-2.6.repo
 read -rsp $'Press enter to proceed with mongodb install...\n'
 yum install -y mongodb-org
 
+# Edit mongod.conf to set bind_ip=0.0.0.0, to accept all inbound connections
+sed -i "/^bind_ip=127.0.0.1/s/127.0.0.1/0.0.0.0/g" /etc/mongod.conf
+
 # install redis
 REDIS_VERSION=3.2.10-2.el7
 yum install -y redis-$REDIS_VERSION
