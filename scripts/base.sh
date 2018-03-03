@@ -6,11 +6,12 @@ yum -y install bzip2-devel ncurses-devel openssl-devel readline-devel sqlite-dev
 yum -y install java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel.x86_64
 yum -y install ImageMagick
 
-echo "[mongodb-org-2.6]" >> /etc/yum.repos.d/mongodb-org-2.6.repo
-echo "name=MongoDB 2.6 Repository" >> /etc/yum.repos.d/mongodb-org-2.6.repo
-echo "baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/" >> /etc/yum.repos.d/mongodb-org-2.6.repo
-echo "gpgcheck=0" >> /etc/yum.repos.d/mongodb-org-2.6.repo
-echo "enabled=1" >> /etc/yum.repos.d/mongodb-org-2.6.repo
+echo "[mongodb-org-3.4]" >> /etc/yum.repos.d/mongodb-org-3.4.repo
+echo "name=MongoDB 3.4 Repository" >> /etc/yum.repos.d/mongodb-org-3.4.repo
+echo "baseurl=https://repo.mongodb.org/yum/redhat/7/mongodb-org/3.4/x86_64/" >> /etc/yum.repos.d/mongodb-org-3.4.repo
+echo "gpgcheck=1" >> /etc/yum.repos.d/mongodb-org-3.4.repo
+echo "enabled=1" >> /etc/yum.repos.d/mongodb-org-3.4.repo
+echo "gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc" >> /etc/yum.repos.d/mongodb-org-3.4.repo
 
 read -rsp $'Press enter to proceed with mongodb install...\n'
 yum install -y mongodb-org
