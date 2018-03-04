@@ -3,7 +3,7 @@
     "type": "virtualbox-iso",
     "headless": false,
     "boot_command": [
-      "<tab> text ks=https://raw.githubusercontent.com/geerlingguy/packer-centos-7/master/http/ks.cfg<enter><wait>"
+      "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
     ],
     "boot_wait": "10s",
     "disk_size": 40520,
@@ -22,8 +22,7 @@
     "virtualbox_version_file": ".vbox_version",
     "vboxmanage": [
       [ "modifyvm", "{{.Name}}", "--memory", "512" ],
-      [ "modifyvm", "{{.Name}}", "--cpus", "1" ],
-      [ "modifyvm", "{{.Name}}", "--natnet1", "192.168/16" ]
+      [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
     ]
   }],
   "provisioners": [{
